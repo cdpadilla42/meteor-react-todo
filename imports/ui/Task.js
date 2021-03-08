@@ -12,7 +12,9 @@ const Task = ({ task, onCheckboxClick, deleteTodo }) => {
         onClick={() => onCheckboxClick(task)}
       />
       <span>{task.text}</span>
-      <button onClick={() => deleteTodo(task)}>&times;</button>
+      <button className="delete" onClick={() => deleteTodo(task)}>
+        &times;
+      </button>
     </li>
   );
 };

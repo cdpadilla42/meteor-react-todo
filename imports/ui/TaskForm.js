@@ -29,6 +29,7 @@ const TaskForm = () => {
         id="text"
         onChange={handleChange}
         value={text}
+        placeholder="New Task"
       />
       <button type="submit">+ Add Task</button>
     </form>

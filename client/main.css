@@ -1,4 +1,68 @@
 body {
   padding: 10px;
   font-family: sans-serif;
+  background-color: #202020;
+  color: hsla(0, 0%, 100%, 0.87);
+  font-weight: 200;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid #363636;
+  padding: 1rem 0;
+  display: flex;
+}
+
+li span {
+  flex: 1;
+}
+
+.delete {
+  border-bottom: none;
+}
+
+button {
+  background-color: rgba(225, 225, 255, 0);
+  color: inherit;
+  border: none;
+  border-bottom: 1px solid #363636;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #f96e64;
+}
+
+input {
+  border: none;
+  background: none;
+  border-bottom: 1px solid #363636;
+  color: white;
+}
+
+input[type='checkbox'] {
+  margin-right: 1rem;
+}
+
+form {
+  display: flex;
+  margin: 2rem 0;
+}
+
+form > input {
+  flex: 1;
 }

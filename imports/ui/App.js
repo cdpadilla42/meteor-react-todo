@@ -23,7 +23,7 @@ export const App = () => {
   );
 
   return (
-    <div>
+    <div className="container">
       <h1>Welcome to Meteor!</h1>
       <TaskForm />
       <ul>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TasksCollection } from '../api/TasksCollection';
 
-const TaskForm = () => {
+const TaskForm = ({ user }) => {
   const [text, setText] = useState('');
 
   function handleChange(e) {
@@ -16,6 +16,7 @@ const TaskForm = () => {
     TasksCollection.insert({
       text: text.trim(),
       createdAt: new Date(),
+      userId: user._id,
     });
 
     setText('');

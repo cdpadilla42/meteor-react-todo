@@ -7,7 +7,7 @@ const Task = ({ task, onCheckboxClick, deleteTodo }) => {
         type="checkbox"
         name="complete"
         id="complete"
-        readonly
+        readOnly
         checked={!!task.isChecked}
         onClick={() => onCheckboxClick(task)}
       />

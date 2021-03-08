@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import { useTracker } from 'meteor/react-meteor-data';
 import Task from './Task';
@@ -18,14 +18,31 @@ const deleteTodo = ({ _id }) => {
 };
 
 export const App = () => {
+  const [hideCompleted, setHideCompleted] = useState(false);
+
+  const hideCompletedFilter = { isChecked: { $ne: true } };
+
   const tasks = useTracker(() =>
-    TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
+    TasksCollection.find(hideCompleted ? hideCompletedFilter : {}, {
+      sort: { createdAt: -1 },
+    }).fetch()
+  );
+
+  const pendingTasksCount = useTracker(() =>
+    TasksCollection.find(hideCompletedFilter).count()
   );
 
   return (
     <div className="container">
-      <h1>Welcome to Meteor!</h1>
+      <h1>
+        Welcome to Meteor! {pendingTasksCount ? `(${pendingTasksCount})` : ''}
+      </h1>
       <TaskForm />
+      <div className="filter">
+        <button onClick={() => setHideCompleted(!hideCompleted)}>
+          {hideCompleted ? 'Show All' : 'Hide Completed'}
+        </button>
+      </div>
       <ul>
         {tasks.map((task) => (
           <Task

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import Task from './Task';
 import { TasksCollection } from '../api/TasksCollection';
@@ -6,15 +7,11 @@ import TaskForm from './TaskForm';
 import LoginForm from './LoginForm';
 
 const toggleChecked = ({ _id, isChecked }) => {
-  TasksCollection.update(_id, {
-    $set: {
-      isChecked: !isChecked,
-    },
-  });
+  Meteor.call('tasks.setIsChecked', _id, !isChecked);
 };
 
 const deleteTodo = ({ _id }) => {
-  TasksCollection.remove(_id);
+  Meteor.call('tasks.remove', _id);
 };
 
 export const App = () => {

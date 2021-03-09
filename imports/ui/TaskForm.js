@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-const TaskForm = ({ user }) => {
+const TaskForm = () => {
   const [text, setText] = useState('');
 
   function handleChange(e) {
